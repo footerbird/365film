@@ -9,7 +9,7 @@
                 <div class="hotwords">
                     <font>热搜词：</font>
                     <?php foreach ($article_hotword as $hotword){ ?>
-                    <a href="<?php echo base_url() ?>article_search/<?php echo $hotword->hotword_name; ?>" target="_blank"><?php echo $hotword->hotword_name; ?></a>
+                    <a href="<?php echo base_url() ?>search/<?php echo $hotword->hotword_name; ?>" target="_blank"><?php echo $hotword->hotword_name; ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -66,3 +66,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function keywordEnter(e){
+    var eve = e || window.event;
+    if(eve.keyCode == 13){
+        keywordSearch();
+    }
+}
+
+function keywordSearch(){
+    if($.trim($("#keyword").val()) == ""){
+        return;
+    }
+    $("#search_form").attr('action','<?php echo base_url() ?>search/'+$("#keyword").val());
+    $("#search_form").submit();
+}
+</script>

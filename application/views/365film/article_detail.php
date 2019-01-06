@@ -42,21 +42,6 @@
     <?php include_once('templete/pub_foot.php') ?>
     
     <script type="text/javascript">
-    function keywordEnter(e){
-        var eve = e || window.event;
-        if(eve.keyCode == 13){
-            keywordSearch();
-        }
-    }
-    
-    function keywordSearch(){
-        if($.trim($("#keyword").val()) == ""){
-            return;
-        }
-        $("#search_form").attr('action','<?php echo base_url() ?>search/'+$("#keyword").val());
-        $("#search_form").submit();
-    }
-    
     $(function(){
         
         lazyLoading();//图片懒加载

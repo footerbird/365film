@@ -273,7 +273,9 @@ class Index_controller extends CI_Controller {
         $data['article_hotword'] = $article_hotword;
         
         if(count(explode('《',$article->article_title)) > 1){
-            $seo_keywords = explode('》',explode('《',$article->article_title)[1])[0].','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
+            $title_explode = explode('《',$article->article_title);
+            $title_explode_explode = explode('》',$title_explode[1]);
+            $seo_keywords = $title_explode_explode[0].','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
         }else{
             $seo_keywords = $article->article_title.','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
         }
@@ -327,7 +329,9 @@ class Index_controller extends CI_Controller {
         $data['article_hotword'] = $article_hotword;
         
         if(count(explode('《',$article->article_title)) > 1){
-            $seo_keywords = explode('》',explode('《',$article->article_title)[1])[0].','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
+            $title_explode = explode('《',$article->article_title);
+            $title_explode_explode = explode('》',$title_explode[1]);
+            $seo_keywords = $title_explode_explode[0].','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
         }else{
             $seo_keywords = $article->article_title.','.$article->article_nation.'电影,365电影网,2019最新电影,热播电影,电影下载,'.$article->article_type;
         }

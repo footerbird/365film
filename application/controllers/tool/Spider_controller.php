@@ -38,12 +38,16 @@ class Spider_controller extends CI_Controller {
         }
         $insert_data['article_summary'] = mb_substr(trim($data['article_summary']),0,160,'utf-8');
         if(count(explode('类型:',$data['article_content'])) > 1){
-            $insert_data['article_type'] = trim(explode('<br>',explode('类型:',$data['article_content'])[1])[0]);
+            $type_explode = explode('类型:',$data['article_content']);
+            $type_explode_explode = explode('<br>',$type_explode[1]);
+            $insert_data['article_type'] = trim($type_explode_explode[0]);
         }else{
             $insert_data['article_type'] = '';
         }
         if(count(explode('制片国家/地区:',$data['article_content'])) > 1){
-            $insert_data['article_nation'] = trim(explode('<br>',explode('制片国家/地区:',$data['article_content'])[1])[0]);
+            $nation_explode = explode('制片国家/地区:',$data['article_content']);
+            $nation_explode_explode = explode('<br>',$nation_explode[1]);
+            $insert_data['article_nation'] = trim($nation_explode_explode[0]);
         }else{
             $insert_data['article_nation'] = '';
         }
@@ -114,12 +118,16 @@ class Spider_controller extends CI_Controller {
             }
             $article_summary = mb_substr(trim($data['article_summary']),0,160,'utf-8');
             if(count(explode('类型:',$data['article_content'])) > 1){
-                $article_type = trim(explode('<br>',explode('类型:',$data['article_content'])[1])[0]);
+                $type_explode = explode('类型:',$data['article_content']);
+                $type_explode_explode = explode('<br>',$type_explode[1]);
+                $article_type = trim($type_explode_explode[0]);
             }else{
                 $article_type = '';
             }
             if(count(explode('制片国家/地区:',$data['article_content'])) > 1){
-                $article_nation = trim(explode('<br>',explode('制片国家/地区:',$data['article_content'])[1])[0]);
+                $nation_explode = explode('制片国家/地区:',$data['article_content']);
+                $nation_explode_explode = explode('<br>',$nation_explode[1]);
+                $article_nation = trim($nation_explode_explode[0]);
             }else{
                 $article_nation = '';
             }
