@@ -5,7 +5,7 @@
         
         <div class="friend-link">
             <div class="container">
-                <ul>
+                <ul style="display: none;">
                     <li><label>友情链接：</label></li>
                     <li><a href="https://36kr.com/" target="_blank">36氪</a>|</li>
                     <li><a href="https://www.huxiu.com/" target="_blank">虎嗅网</a>|</li>

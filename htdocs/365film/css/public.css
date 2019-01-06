@@ -2745,6 +2745,9 @@ textarea {
   max-width: 100%;
   margin: 0 auto;
 }
+.article-left article section img.poster {
+  width: 600px;
+}
 .article-left article section a {
   color: #336699;
 }
