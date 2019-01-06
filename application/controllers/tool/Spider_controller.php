@@ -30,7 +30,8 @@ class Spider_controller extends CI_Controller {
             $insert_data['poster_path'] = $this->upload($all_poster_path);
             $all_pathinfo = pathinfo($all_poster_path);
             $all_thumb_path = $all_pathinfo['dirname'].'/'.$all_pathinfo['filename'].'_1.'.$all_pathinfo['extension'];
-            if(@file_get_contents($all_thumb_path)){
+            $img_exist = @getimagesize($all_thumb_path);
+            if($img_exist){
                 $insert_data['thumb_path'] = $this->upload($all_thumb_path);
             }else{
                 $insert_data['thumb_path'] = $insert_data['poster_path'];
@@ -110,7 +111,8 @@ class Spider_controller extends CI_Controller {
                 $poster_path = $this->upload($all_poster_path);
                 $all_pathinfo = pathinfo($all_poster_path);
                 $all_thumb_path = $all_pathinfo['dirname'].'/'.$all_pathinfo['filename'].'_1.'.$all_pathinfo['extension'];
-                if(@file_get_contents($all_thumb_path)){
+                $img_exist = @getimagesize($all_thumb_path);
+                if($img_exist){
                     $thumb_path = $this->upload($all_thumb_path);
                 }else{
                     $thumb_path = $poster_path;
@@ -196,7 +198,7 @@ class Spider_controller extends CI_Controller {
             $imgType = 'png';
             break;
         default:
-            $imgType = 'png';
+            $imgType = 'jpg';
             break;
         }
         $html = file_get_contents($path);
