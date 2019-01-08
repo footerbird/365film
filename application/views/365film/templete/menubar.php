@@ -34,9 +34,6 @@
                     <li class="<?php if(!empty($nation) && $nation == 'jp'){ echo 'cur'; } ?>">
                         <a href="<?php echo base_url() ?>regions_jp.html">日本</a>
                     </li>
-                    <li class="<?php if(!empty($nation) && $nation == 'ue'){ echo 'cur'; } ?>">
-                        <a href="<?php echo base_url() ?>regions_ue.html">欧美</a>
-                    </li>
                     <li class="<?php if(!empty($nation) && $nation == 'kr'){ echo 'cur'; } ?>">
                         <a href="<?php echo base_url() ?>regions_kr.html">韩国</a>
                     </li>

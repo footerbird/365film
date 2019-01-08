@@ -43,14 +43,14 @@ class Spider_controller extends CI_Controller {
             $type_explode_explode = explode('<br>',$type_explode[1]);
             $insert_data['article_type'] = trim($type_explode_explode[0]);
         }else{
-            $insert_data['article_type'] = '';
+            $insert_data['article_type'] = '剧情';
         }
         if(count(explode('制片国家/地区:',$data['article_content'])) > 1){
             $nation_explode = explode('制片国家/地区:',$data['article_content']);
             $nation_explode_explode = explode('<br>',$nation_explode[1]);
             $insert_data['article_nation'] = trim($nation_explode_explode[0]);
         }else{
-            $insert_data['article_nation'] = '';
+            $insert_data['article_nation'] = '全部';
         }
         $insert_data['article_content'] = preg_replace('/<img[^>]*src[=\"\'\s]+[^\.]*\/([^\.]+)\.[^\"\']+[\"\']?[^>]*>/i','<img class="poster" src="/'.$insert_data['poster_path'].'" />',$data['article_content']);
         $this->load->view('tool/spider_confirm',$insert_data);
@@ -124,14 +124,14 @@ class Spider_controller extends CI_Controller {
                 $type_explode_explode = explode('<br>',$type_explode[1]);
                 $article_type = trim($type_explode_explode[0]);
             }else{
-                $article_type = '';
+                $article_type = '剧情';
             }
             if(count(explode('制片国家/地区:',$data['article_content'])) > 1){
                 $nation_explode = explode('制片国家/地区:',$data['article_content']);
                 $nation_explode_explode = explode('<br>',$nation_explode[1]);
                 $article_nation = trim($nation_explode_explode[0]);
             }else{
-                $article_nation = '';
+                $article_nation = '全部';
             }
             $article_content = preg_replace('/<img[^>]*src[=\"\'\s]+[^\.]*\/([^\.]+)\.[^\"\']+[\"\']?[^>]*>/i','<img class="poster" src="/'.$poster_path.'" />',$data['article_content']);
             $status = 1;
