@@ -22,9 +22,17 @@ class Article_model extends CI_Model {
     }
     
     //更新一条电影记录的评分和排名
-    public function update_articleOne($article_route,$article_score,$article_rank){
+    public function update_articleOne($article_route,$article_title,$article_summary,$thumb_path,$poster_path,$article_nation,$article_type,$article_content,$status,$article_score,$article_rank){
         $sql = "update article_info set"
-            ." article_score=".$article_score
+            ." article_title='".$article_title
+            ."', article_summary='".$article_summary
+            ."', thumb_path='".$thumb_path
+            ."', poster_path='".$poster_path
+            ."', article_nation='".$article_nation
+            ."', article_type='".$article_type
+            ."', article_content='".$article_content
+            ."', status=".$status
+            .", article_score=".$article_score
             .", article_rank=".$article_rank
             ." where article_route='".$article_route."'";
         $query = $this->db->query($sql);

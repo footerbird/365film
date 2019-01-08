@@ -12,9 +12,7 @@
     
     <form action="<?php echo base_url() ?>tool/Spider_controller/update_spider" method="post" target="_blank">
         <p>电影路由：<input type="text" name="article_route" value="" placeholder="电影路由" style="width: 400px;height: 40px;" /></p>
-        <p>豆瓣评分：<input type="text" name="article_score" value="0" placeholder="豆瓣评分" style="width: 400px;height: 40px;" /></p>
-        <p>时光网排名：<input type="text" name="article_rank" value="0" placeholder="时光网排名" style="width: 400px;height: 40px;" /></p>
-        <p><input type="submit" value="更新"/></p>
+        <p><input type="submit" value="查询"/></p>
     </form>
     
     <script src="/htdocs/365film/js/jquery-1.11.1.min.js?<?php echo CACHE_TIME; ?>"></script>

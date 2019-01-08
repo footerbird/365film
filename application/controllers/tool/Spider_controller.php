@@ -169,19 +169,67 @@ class Spider_controller extends CI_Controller {
         $this->load->view('tool/update');
     }
     
-    public function update_spider(){//执行更新操作
+    public function update_spider(){//获取更新信息
         
         $article_route = trim($this->input->get_post('article_route'));//电影路由
-        $article_score = trim($this->input->get_post('article_score'));//豆瓣评分
-        $article_rank = trim($this->input->get_post('article_rank'));//时光网排名
         
         //加载电影模型类
         $this->load->model('365film/Article_model','article');
-        $updateStatus = $this->article->update_articleOne($article_route,$article_score,$article_rank);
+        $article = $this->article->get_articleDetail($article_route);
+        $data['article'] = $article;
+        
+        $this->load->view('tool/update_confirm',$data);
+    }
+    
+    public function update_confirm(){//执行更新操作
+        
+        $article_route = trim($this->input->get_post('article_route'));//电影路由
+        $article_title = trim($this->input->get_post('article_title'));//电影标题
+        $article_summary = trim($this->input->get_post('article_summary'));//电影简介
+        $thumb_path = trim($this->input->get_post('thumb_path'));//缩略图
+        $poster_path = trim($this->input->get_post('poster_path'));//电影海报
+        $article_nation = trim($this->input->get_post('article_nation'));//电影国家
+        $article_type = trim($this->input->get_post('article_type'));//电影类型
+        $article_content = $this->input->get_post('article_content');//电影内容
+        $status = 1;
+        $article_score = trim($this->input->get_post('article_score'));//豆瓣评分
+        $article_rank = $this->input->get_post('article_rank');//时光排名
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        $updateStatus = $this->article->update_articleOne($article_route,$article_title,$article_summary,$thumb_path,$poster_path,$article_nation,$article_type,$article_content,$status,$article_score,$article_rank);
         if($updateStatus){
             echo '更新成功';
         }else{
             echo '更新失败';
+        }
+    }
+    
+    public function addfull(){//添加信息页面（不从网页爬取）
+        $this->load->view('tool/addfull');
+    }
+    
+    public function addfull_spider(){//执行添加操作
+        
+        $article_route = random_string_numlet(6);//电影路由
+        $article_title = trim($this->input->get_post('article_title'));//电影标题
+        $article_summary = trim($this->input->get_post('article_summary'));//电影简介
+        $all_thumb_path = trim($this->input->get_post('thumb_path'));//缩略图
+        $thumb_path = $this->upload($all_thumb_path);
+        $all_poster_path = trim($this->input->get_post('poster_path'));//电影海报
+        $poster_path = $this->upload($all_poster_path);
+        $article_nation = trim($this->input->get_post('article_nation'));//电影国家
+        $article_type = trim($this->input->get_post('article_type'));//电影类型
+        $article_content = $this->input->get_post('article_content');//电影内容
+        $status = 1;
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        $addStatus = $this->article->add_articleOne($article_route,$article_title,$article_summary,$thumb_path,$poster_path,$article_nation,$article_type,$article_content,$status);
+        if($addStatus){
+            echo '插入成功，电影：'.$article_title;
+        }else{
+            echo '插入失败';
         }
     }
 
