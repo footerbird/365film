@@ -24,13 +24,13 @@ class Article_model extends CI_Model {
     //更新一条电影记录的评分和排名
     public function update_articleOne($article_route,$article_title,$article_summary,$thumb_path,$poster_path,$article_nation,$article_type,$article_content,$status,$article_score,$article_rank){
         $sql = "update article_info set"
-            ." article_title='".$article_title
-            ."', article_summary='".$article_summary
+            ." article_title='".addslashes($article_title)
+            ."', article_summary='".addslashes($article_summary)
             ."', thumb_path='".$thumb_path
             ."', poster_path='".$poster_path
             ."', article_nation='".$article_nation
             ."', article_type='".$article_type
-            ."', article_content='".$article_content
+            ."', article_content='".addslashes($article_content)
             ."', status=".$status
             .", article_score=".$article_score
             .", article_rank=".$article_rank
@@ -71,7 +71,7 @@ class Article_model extends CI_Model {
     //电影搜索列表页面,输出前$length条数
     public function get_articleSearch($keyword,$start,$length){
         $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "
-            ." where status = 1 and article_content like '%".$keyword."%' order by create_time desc limit ".$start.",".$length;
+            ." where status = 1 and concat(article_title,article_summary) like '%".addslashes($keyword)."%' order by create_time desc limit ".$start.",".$length;
         $query = $this->db->query($sql);
         return $query->result();
     }
