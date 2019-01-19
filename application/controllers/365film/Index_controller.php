@@ -345,6 +345,24 @@ class Index_controller extends CI_Controller {
         $this->load->view('365film/article_latest',$data);
     }
     
+    public function domain_list(){//域名列表（公司域名）
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        //get_articleHotword方法得到热搜词列表
+        $article_hotword = $this->article->get_articleHotword(0,10);
+        $data['article_hotword'] = $article_hotword;
+        
+        $seo = array(
+            'seo_title'=>' 精品域名列表',
+            'seo_keywords'=>'域名出售、精品域名、平价域名',
+            'seo_description'=>'平台提供大量精品域名出售;'
+        );
+        $data['seo'] = json_decode(json_encode($seo));
+        
+        $this->load->view('365film/domain_list',$data);
+    }
+    
 
 }
 ?>

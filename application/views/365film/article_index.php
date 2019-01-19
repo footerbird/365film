@@ -45,6 +45,13 @@
         </div>
         <div class="article-right">
             
+            <?php if(!empty($redirect)){ ?>
+            <!--域名列表广告-->
+            <a style="display: block; background-color: #fff; box-shadow: 0px 0px 3px #c3c3c4; border-radius: 3px; padding: 5px; margin-bottom: 15px;" href="<?php echo base_url() ?>domain.html" target="_blank">
+                <img style="display: block; width: 100%;" src="/htdocs/365film/images/poster-domain.png" />
+            </a>
+            <?php } ?>
+            
             <?php  if(count($article_rank) > 0){ ?>
             <div class="rank">
                 <a class="rank-title" href="<?php echo base_url() ?>mtime.html" target="_blank" title="点击查看更多">时光网TOP100</a>
