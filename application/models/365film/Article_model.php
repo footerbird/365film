@@ -52,6 +52,14 @@ class Article_model extends CI_Model {
         return $query->result();
     }
     
+    //电影列表页面,获取所有的电影列表
+    public function get_articleAll(){
+        $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "
+            ." where status = 1 order by create_time desc";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+    
     //时光网TOP100列表,输出前$length条数
     public function get_articleRank($start,$length){
         $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "

@@ -255,6 +255,30 @@ class Spider_controller extends CI_Controller {
         file_put_contents($upload_path, $html);
         return $upload_path;
     }
+    
+    public function sitemap(){
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        $article_list = $this->article->get_articleAll();
+        $urls = array();
+        foreach($article_list as $key => $item){
+            array_push($urls,'http://www.365film.com.cn/movie_'.$item->article_route.'.html');
+        }
+        $api = 'http://data.zz.baidu.com/urls?site=www.365film.com.cn&token=0N5yB4KBnjilg4v4';
+        $ch = curl_init();
+        $options =  array(
+            CURLOPT_URL => $api,
+            CURLOPT_POST => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => implode("\n", $urls),
+            CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+        );
+        curl_setopt_array($ch, $options);
+        $result = curl_exec($ch);
+        echo $result;
+        
+    }
 
 }
 ?>
