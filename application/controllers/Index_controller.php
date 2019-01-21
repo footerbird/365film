@@ -30,9 +30,43 @@ class Index_controller extends CI_Controller {
         
         //加载电影模型类
         $this->load->model('365film/Article_model','article');
+        //通过文章模型类中的get_articleCount()方法得到行数，
+        $count = $this->article->get_articleCount('');
+        
+        $page = 1;//默认页码为1
+        
+        $page_size = 20;//单页记录数
+        $offset = ($page-1)*$page_size;//偏移量
+        
+        switch($page){
+          case 1:
+            $num_links = 4;//num_links选中页右边的个数
+            break;
+          case 2:
+            $num_links = 3;
+            break;
+          case ceil($count/$page_size):
+            $num_links = 4;
+            break;
+          case ceil($count/$page_size)-1:
+            $num_links = 3;
+            break;
+          default:
+            $num_links = 2;
+            break;
+        }
+        
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'page/';
+        $config['total_rows'] = $count;
+        $config['per_page'] = $page_size;// $pagesize每页条数
+        $config['num_links'] = $num_links;//设置选中页左右两边的页数
+        
         //get_articleList方法得到电影列表
-        $article_list = $this->article->get_articleList('',0,10);
+        $article_list = $this->article->get_articleList('',$offset,$page_size);
         $data['article_list'] = $article_list;
+        
+        $this->pagination->initialize($config);
         
         //get_articleRank方法得到时光网TOP100列表
         $article_rank = $this->article->get_articleRank(0,5);

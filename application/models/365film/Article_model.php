@@ -60,6 +60,19 @@ class Article_model extends CI_Model {
         return $query->result();
     }
     
+    //电影列表条目数,传入article_nation
+    public function get_articleCount($article_nation){
+        if($article_nation == ''){
+            $sql = "select * from article_info "
+                ." where status = 1";
+        }else{
+            $sql = "select * from article_info "
+                ." where status = 1 and article_nation like '%".$article_nation."%'";
+        }
+        $query = $this->db->query($sql);
+        return $query->num_rows();
+    }
+    
     //时光网TOP100列表,输出前$length条数
     public function get_articleRank($start,$length){
         $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "

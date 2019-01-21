@@ -756,6 +756,41 @@ textarea{resize: none; overflow-y:auto;}
     
 }
 
+/*分页*/
+.pagination{
+    margin: 15px 0;
+    font-size: 0;
+    text-align: right;
+    li{
+        display: inline-block;
+        a{
+            display: block;
+            font-size: 14px;
+            color: #0a93c9;
+            text-align: center;
+            min-width: 36px;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 13px;
+            background-color: #fff;
+            border: 1px solid #ebeced;
+            margin-left: -1px;
+            &:hover{
+                background-color: #ebeced;
+            }
+        }
+        &.current{
+            a{
+                color: #fff;
+                background-color: #0a93c9;
+                &:hover{
+                    background-color: #0a93c9;
+                }
+            }
+        }
+    }
+}
+
 /*头条页面*/
 .article-left{
     float: left;

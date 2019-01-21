@@ -1,6 +1,76 @@
 <?php
 class Index_controller extends CI_Controller {
     
+    public function article_pagination($page){//首页分页
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        //通过文章模型类中的get_articleCount()方法得到行数，
+        $count = $this->article->get_articleCount('');
+        
+        if(!isset($page) || !is_numeric($page)){
+            redirect(base_url());
+            exit;
+        }
+        
+        $page_size = 20;//单页记录数
+        $offset = ($page-1)*$page_size;//偏移量
+        
+        switch($page){
+          case 1:
+            $num_links = 4;//num_links选中页右边的个数
+            break;
+          case 2:
+            $num_links = 3;
+            break;
+          case ceil($count/$page_size):
+            $num_links = 4;
+            break;
+          case ceil($count/$page_size)-1:
+            $num_links = 3;
+            break;
+          default:
+            $num_links = 2;
+            break;
+        }
+        
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'page/';
+        $config['total_rows'] = $count;
+        $config['per_page'] = $page_size;// $pagesize每页条数
+        $config['num_links'] = $num_links;//设置选中页左右两边的页数
+        
+        //get_articleList方法得到电影列表
+        $article_list = $this->article->get_articleList('',$offset,$page_size);
+        $data['article_list'] = $article_list;
+        
+        $this->pagination->initialize($config);
+        
+        //get_articleRank方法得到时光网TOP100列表
+        $article_rank = $this->article->get_articleRank(0,5);
+        $data['article_rank'] = $article_rank;
+        
+        //get_articleRecommend方法得到推荐列表
+        $article_recommend = $this->article->get_articleRecommend(0,5);
+        $data['article_recommend'] = $article_recommend;
+        
+        $data['nation'] = 'all';
+        
+        //get_articleHotword方法得到热搜词列表
+        $article_hotword = $this->article->get_articleHotword(0,10);
+        $data['article_hotword'] = $article_hotword;
+        
+        $seo = array(
+            'seo_title'=>'',
+            'seo_keywords'=>'',
+            'seo_description'=>''
+        );
+        $data['seo'] = json_decode(json_encode($seo));
+        
+        $this->load->view('365film/article_index',$data);
+        
+    }
+    
     public function article_list($article_nation){//电影列表
         
         if($article_nation == ''){

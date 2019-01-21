@@ -2694,6 +2694,38 @@ textarea {
 .pub-lg-btn {
   /*默认高度44，大型按钮，颜色#ea6f5a默认色*/
 }
+/*分页*/
+.pagination {
+  margin: 15px 0;
+  font-size: 0;
+  text-align: right;
+}
+.pagination li {
+  display: inline-block;
+}
+.pagination li a {
+  display: block;
+  font-size: 14px;
+  color: #0a93c9;
+  text-align: center;
+  min-width: 36px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 13px;
+  background-color: #fff;
+  border: 1px solid #ebeced;
+  margin-left: -1px;
+}
+.pagination li a:hover {
+  background-color: #ebeced;
+}
+.pagination li.current a {
+  color: #fff;
+  background-color: #0a93c9;
+}
+.pagination li.current a:hover {
+  background-color: #0a93c9;
+}
 /*头条页面*/
 .article-left {
   float: left;

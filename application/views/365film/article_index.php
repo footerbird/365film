@@ -34,13 +34,7 @@
                 
             </div>
             
-            <?php if(count($article_list) < 10 ){ ?>
-            <div class="article-loadmore" id="article_loading" style="display: none;">加载中，请稍后...</div>
-            <div class="article-loadmore" id="article_loadnone">喂喂，你触碰到我的底线了</div>
-            <?php }else{ ?>
-            <div class="article-loadmore" id="article_loading">加载中，请稍后...</div>
-            <div class="article-loadmore" id="article_loadnone" style="display: none;">喂喂，你触碰到我的底线了</div>
-            <?php } ?>
+            <?php echo $this->pagination->create_links(); ?>
             
         </div>
         <div class="article-right">
@@ -101,36 +95,6 @@
             $(this).parent().toggleClass("active");
             $(this).siblings(".summary").slideToggle();
         })
-        
-        <?php if(count($article_list) >= 10){ ?>
-        var article_loading = false;//状态标记
-        $(window).on("scroll",function(){
-            if($("#article_loadnone").is(":visible")) return;
-            if($(window).scrollTop() + $(window).height() + 100 < $(document).height()) return;
-            if(article_loading) return;
-            article_loading = true;
-            var current_page = parseInt($("#article_page").val());
-            $.ajax({
-                type:"post",
-                url:"<?php echo base_url() ?>365film/Index_controller/get_articleListAjax_tpl",
-                async:true,
-                data:{
-                    nation:$("#article_nation").val(),
-                    page: current_page+1
-                },
-                success:function(html){
-                    var $html = $(html);
-                    if($html.length < 10){
-                        $("#article_loading").hide();
-                        $("#article_loadnone").show();
-                    }
-                    $("#article_list").append(html);
-                    $("#article_page").val(current_page+1);
-                    article_loading = false;
-                }
-            });
-        })
-        <?php } ?>
         
     })
     </script>
