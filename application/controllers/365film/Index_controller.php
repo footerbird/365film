@@ -51,13 +51,13 @@ class Index_controller extends CI_Controller {
         $data['article_rank'] = $article_rank;
         
         //get_articleRecommend方法得到推荐列表
-        $article_recommend = $this->article->get_articleRecommend(5,10);
+        $article_recommend = $this->article->get_articleRecommend(5,5);
         $data['article_recommend'] = $article_recommend;
         
         $data['nation'] = 'all';
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(
@@ -133,13 +133,13 @@ class Index_controller extends CI_Controller {
         $data['article_rank'] = $article_rank;
         
         //get_articleRecommend方法得到推荐列表
-        $article_recommend = $this->article->get_articleRecommend(5,10);
+        $article_recommend = $this->article->get_articleRecommend(5,5);
         $data['article_recommend'] = $article_recommend;
         
         $data['nation'] = $article_nation;
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(
@@ -229,14 +229,14 @@ class Index_controller extends CI_Controller {
         $data['article_rank'] = $article_rank;
         
         //get_articleRecommend方法得到推荐列表
-        $article_recommend = $this->article->get_articleRecommend(5,10);
+        $article_recommend = $this->article->get_articleRecommend(5,5);
         $data['article_recommend'] = $article_recommend;
         
         //add_articleHotword方法添加热搜词
         $this->article->add_articleHotword(urldecode($keyword));
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(
@@ -275,11 +275,11 @@ class Index_controller extends CI_Controller {
         $data['article_list'] = $article_list;
         
         //get_articleRecommend方法得到推荐列表
-        $article_recommend = $this->article->get_articleRecommend(5,10);
+        $article_recommend = $this->article->get_articleRecommend(5,5);
         $data['article_recommend'] = $article_recommend;
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(
@@ -339,7 +339,7 @@ class Index_controller extends CI_Controller {
         $data['article_relative'] = $article_relative;
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         if(count(explode('《',$article->article_title)) > 1){
@@ -395,7 +395,7 @@ class Index_controller extends CI_Controller {
         $data['article_relative'] = $article_relative;
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         if(count(explode('《',$article->article_title)) > 1){
@@ -420,7 +420,7 @@ class Index_controller extends CI_Controller {
         //加载电影模型类
         $this->load->model('365film/Article_model','article');
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(5,15);
+        $article_hotword = $this->article->get_articleHotword(5,10);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(
