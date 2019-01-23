@@ -73,13 +73,13 @@ class Index_controller extends CI_Controller {
         $data['article_rank'] = $article_rank;
         
         //get_articleRecommend方法得到推荐列表
-        $article_recommend = $this->article->get_articleRecommend(0,5);
+        $article_recommend = $this->article->get_articleRecommend(5,10);
         $data['article_recommend'] = $article_recommend;
         
         $data['nation'] = 'all';
         
         //get_articleHotword方法得到热搜词列表
-        $article_hotword = $this->article->get_articleHotword(0,10);
+        $article_hotword = $this->article->get_articleHotword(5,15);
         $data['article_hotword'] = $article_hotword;
         
         $seo = array(

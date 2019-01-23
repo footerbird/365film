@@ -43,7 +43,7 @@ class Article_model extends CI_Model {
     public function get_articleList($article_nation,$start,$length){
         if($article_nation == ''){
             $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "
-                ." where status = 1 order by create_time desc limit ".$start.",".$length;
+                ." where status = 1 order by rand() limit ".$start.",".$length;
         }else{
             $sql = "select article_route,article_title,article_summary,thumb_path,article_type,article_score,article_rank from article_info "
                 ." where status = 1 and article_nation like '%".$article_nation."%' order by create_time desc limit ".$start.",".$length;
@@ -107,7 +107,7 @@ class Article_model extends CI_Model {
     //热搜词列表,输出前$length条数
     public function get_articleHotword($start,$length){
         $sql = "select hotword_name,COUNT(hotword_name) as hotword_count from article_hotword"
-            ." where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(create_time) group by hotword_name order by hotword_count desc limit ".$start.",".$length;
+            ." where DATE_SUB(CURDATE(), INTERVAL 1 DAY) <= date(create_time) group by hotword_name order by hotword_count desc limit ".$start.",".$length;
         $query = $this->db->query($sql);
         return $query->result();
     }
