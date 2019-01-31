@@ -68,6 +68,17 @@ class Index_controller extends CI_Controller {
         
         $this->pagination->initialize($config);
         
+        //通过文章模型类中的get_articleCountbyType()方法得到类型数量，
+        $type_arr['dongzuo'] = '动作';
+        $type_arr['xiju'] = '喜剧';
+        $type_arr['kongbu'] = '恐怖';
+        $type_arr['kehuan'] = '科幻';
+        $type_arr['juqing'] = '剧情';
+        foreach($type_arr as $key => $item){
+            $type_count[$key] = $this->article->get_articleCountbyType($item);
+        }
+        $data['type_count'] = $type_count;
+        
         //get_articleRank方法得到时光网TOP100列表
         $article_rank = $this->article->get_articleRank(0,5);
         $data['article_rank'] = $article_rank;

@@ -791,6 +791,52 @@ textarea{resize: none; overflow-y:auto;}
     }
 }
 
+/*首页电影类型*/
+.article-typenav{
+    background-color: #fff;
+    padding: 20px 0;
+    ul{
+        width: 1020px;
+        li{
+            float: left;
+            width: 184px;
+            height: 64px;
+            margin-right: 20px;
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                .after-cls;
+                .title{
+                    float: left;
+                    width: 64px;
+                    height: 64px;
+                    line-height: 1.4;
+                    text-align: center;
+                    .type{
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: #fff;
+                        padding: 10px 0 6px;
+                    }
+                }
+                img{
+                    float: left;
+                    width: 120px;
+                    height: 64px;
+                    opacity: .6;
+                    .transition-all(.4s);
+                }
+                &:hover{
+                    img{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
 /*头条页面*/
 .article-left{
     float: left;

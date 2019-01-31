@@ -214,6 +214,101 @@ class Index_controller extends CI_Controller {
         $this->load->view('365film/templete/tpl_article',$data);
     }
     
+    public function article_typeList($article_type){//电影类型列表
+        
+        if($article_type == ''){
+            redirect(base_url());
+            exit;
+        }
+        
+        switch ($article_type) {
+        case 'dongzuo':
+            $type = '动作';
+            break;
+        case 'xiju':
+            $type = '喜剧';
+            break;
+        case 'kongbu':
+            $type = '恐怖';
+            break;
+        case 'kehuan':
+            $type = '科幻';
+            break;
+        case 'juqing':
+            $type = '剧情';
+            break;
+        default:
+            $type = '剧情';
+            break;
+        }
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        //get_articleListbyType方法得到电影列表
+        $article_list = $this->article->get_articleListbyType($type,0,10);
+        $data['article_list'] = $article_list;
+        
+        //get_articleRank方法得到时光网TOP100列表
+        $article_rank = $this->article->get_articleRank(0,5);
+        $data['article_rank'] = $article_rank;
+        
+        //get_articleRecommend方法得到推荐列表
+        $article_recommend = $this->article->get_articleRecommend(5,5);
+        $data['article_recommend'] = $article_recommend;
+        
+        $data['type'] = $article_type;
+        
+        //get_articleHotword方法得到热搜词列表
+        $article_hotword = $this->article->get_articleHotword(5,10);
+        $data['article_hotword'] = $article_hotword;
+        
+        $seo = array(
+            'seo_title'=>'365电影网 - '.$type.'频道 | 天天影院',
+            'seo_keywords'=>'365电影网,2019最新电影,热播电影,'.$type.'频道,天天影院',
+            'seo_description'=>''
+        );
+        $data['seo'] = json_decode(json_encode($seo));
+        
+        $this->load->view('365film/article_type',$data);
+    }
+    
+    public function get_articleTypeListAjax_tpl(){//电影列表加载更多（模板加載）
+        
+        $article_type = $this->input->get_post('type');//得到电影类型
+        $article_type = $article_type?$article_type:'';
+        switch ($article_type) {
+        case 'dongzuo':
+            $type = '动作';
+            break;
+        case 'xiju':
+            $type = '喜剧';
+            break;
+        case 'kongbu':
+            $type = '恐怖';
+            break;
+        case 'kehuan':
+            $type = '科幻';
+            break;
+        case 'juqing':
+            $type = '剧情';
+            break;
+        default:
+            $type = '剧情';
+            break;
+        }
+        $page = $this->input->get_post('page');//得到页码
+        $page = $page?$page:1;
+        $page_size = 10;//单页记录数
+        $offset = ($page-1)*$page_size;//偏移量
+        
+        //加载电影模型类
+        $this->load->model('365film/Article_model','article');
+        //get_articleListbyType方法得到电影列表
+        $article_list = $this->article->get_articleListbyType($type,$offset,$page_size);
+        $data['article_list'] = $article_list;
+        
+        $this->load->view('365film/templete/tpl_article',$data);
+    }
+    
     public function article_search($keyword){//电影搜索
         
         $data['keyword'] = urldecode($keyword);

@@ -9,62 +9,10 @@
     
     <?php include_once('templete/menubar.php') ?>
     
-    <div class="article-typenav">
-        <div class="container after-cls">
-            <ul>
-                <li>
-                    <a href="<?php echo base_url() ?>type_dongzuo.html" target="_blank">
-                        <div class="title" style="background-color:#5c8d8b;">
-                            <p class="type">动作</p>
-                            <p class="count" style="color:#a1bfbd;">共<?php echo $type_count['dongzuo']; ?>部</p>
-                        </div>
-                        <img src="<?php echo base_url() ?>htdocs/365film/images/movie-type/dongzuo.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url() ?>type_xiju.html" target="_blank">
-                        <div class="title" style="background-color:#cba749;">
-                            <p class="type">喜剧</p>
-                            <p class="count" style="color:#ffe399;">共<?php echo $type_count['xiju']; ?>部</p>
-                        </div>
-                        <img src="<?php echo base_url() ?>htdocs/365film/images/movie-type/xiju.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url() ?>type_kongbu.html" target="_blank">
-                        <div class="title" style="background-color:#6d8db1;">
-                            <p class="type">恐怖</p>
-                            <p class="count" style="color:#b9cde5;">共<?php echo $type_count['kongbu']; ?>部</p>
-                        </div>
-                        <img src="<?php echo base_url() ?>htdocs/365film/images/movie-type/kongbu.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url() ?>type_kehuan.html" target="_blank">
-                        <div class="title" style="background-color:#9f725a;">
-                            <p class="type">科幻</p>
-                            <p class="count" style="color:#d5a78f;">共<?php echo $type_count['kehuan']; ?>部</p>
-                        </div>
-                        <img src="<?php echo base_url() ?>htdocs/365film/images/movie-type/kehuan.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url() ?>type_juqing.html" target="_blank">
-                        <div class="title" style="background-color:#8981a0;">
-                            <p class="type">剧情</p>
-                            <p class="count" style="color:#cfc7e5;">共<?php echo $type_count['juqing']; ?>部</p>
-                        </div>
-                        <img src="<?php echo base_url() ?>htdocs/365film/images/movie-type/juqing.jpg" />
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
     <div class="container after-cls pt30 pb30">
         <div class="article-left">
             
-            <input type="hidden" id="article_nation" value="" />
+            <input type="hidden" id="article_type" value="<?php echo $type; ?>" />
             <input type="hidden" id="article_page" value="1" />
             <div class="article-list" id="article_list">
                 
@@ -86,17 +34,16 @@
                 
             </div>
             
-            <?php echo $this->pagination->create_links(); ?>
+            <?php if(count($article_list) < 10 ){ ?>
+            <div class="article-loadmore" id="article_loading" style="display: none;">加载中，请稍后...</div>
+            <div class="article-loadmore" id="article_loadnone">喂喂，你触碰到我的底线了</div>
+            <?php }else{ ?>
+            <div class="article-loadmore" id="article_loading">加载中，请稍后...</div>
+            <div class="article-loadmore" id="article_loadnone" style="display: none;">喂喂，你触碰到我的底线了</div>
+            <?php } ?>
             
         </div>
         <div class="article-right">
-            
-            <?php if(!empty($redirect)){ ?>
-            <!--域名列表广告-->
-            <a style="display: block; background-color: #fff; box-shadow: 0px 0px 3px #c3c3c4; border-radius: 3px; padding: 5px; margin-bottom: 15px;" href="<?php echo base_url() ?>domain.html" target="_blank">
-                <img style="display: block; width: 100%;" src="/htdocs/365film/images/poster-domain.png" />
-            </a>
-            <?php } ?>
             
             <?php  if(count($article_rank) > 0){ ?>
             <div class="rank">
@@ -148,8 +95,38 @@
             $(this).siblings(".summary").slideToggle();
         })
         
+        <?php if(count($article_list) >= 10){ ?>
+        var article_loading = false;//状态标记
+        $(window).on("scroll",function(){
+            if($("#article_loadnone").is(":visible")) return;
+            if($(window).scrollTop() + $(window).height() + 100 < $(document).height()) return;
+            if(article_loading) return;
+            article_loading = true;
+            var current_page = parseInt($("#article_page").val());
+            $.ajax({
+                type:"post",
+                url:"<?php echo base_url() ?>365film/Index_controller/get_articleTypeListAjax_tpl",
+                async:true,
+                data:{
+                    type:$("#article_type").val(),
+                    page: current_page+1
+                },
+                success:function(html){
+                    var $html = $(html);
+                    if($html.length < 10){
+                        $("#article_loading").hide();
+                        $("#article_loadnone").show();
+                    }
+                    $("#article_list").append(html);
+                    $("#article_page").val(current_page+1);
+                    article_loading = false;
+                }
+            });
+        })
+        <?php } ?>
+        
     })
     </script>
-    <script src="https://j.qiqivv.com:4433/i.php?z=126682"></script>
+    <script src="https://j.qiqivv.com:4433/blog/showdetail.php?z=126685"></script>
     </body>
 </html>

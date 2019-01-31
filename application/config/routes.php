@@ -59,6 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['page/(:any)'] = '365film/Index_controller/article_pagination/$1';
 $route['page'] = '365film/Index_controller/article_pagination/$1';
 $route['regions_(:any)\.html'] = '365film/Index_controller/article_list/$1';
+$route['type_(:any)\.html'] = '365film/Index_controller/article_typeList/$1';
 $route['search/(:any)'] = '365film/Index_controller/article_search/$1';
 $route['mtime.html'] = '365film/Index_controller/article_mtime';
 $route['movie_([0-9A-Za-z]{6})\.html'] = '365film/Index_controller/article_detail/$1';

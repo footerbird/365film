@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //更新CSS JS缓存时间
-define('CACHE_TIME', '201901220000');
+define('CACHE_TIME', '201902010118');
 
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
