@@ -13,4 +13,13 @@
 <link rel="shortcut icon" href="/htdocs/365film/images/favicon.ico" type="image/x-icon">
 <?php if(isset($styles)){ foreach($styles as $style){ echo '<link rel="stylesheet" href="'.$style.'"/>';} }?>
 <link rel="stylesheet" href="/htdocs/365film/css/public.css?<?php echo CACHE_TIME; ?>">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0b63f85aaf809318dae086b3063b9bd5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
