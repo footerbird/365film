@@ -9,6 +9,48 @@
     
     <?php include_once('templete/menubar.php') ?>
     
+    <div class="article-banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_RLsQOF.html" target="_blank" style="background-color: #374049;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_RLsQOF.jpg" />
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_8AIkbb.html" target="_blank" style="background-color: #050102;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_8AIkbb.jpg" />
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_B2r3bc.html" target="_blank" style="background-color: #050102;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_B2r3bc.jpg" />
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_bOi7oM.html" target="_blank" style="background-color: #f9f5e9;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_bOi7oM.jpg" />
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_D0yTp5.html" target="_blank" style="background-color: #000000;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_D0yTp5.jpg" />
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a class="swiper-link" href="<?php echo base_url() ?>movie_EJ2hQV.html" target="_blank" style="background-color: #e1c428;">
+                    <img src="<?php echo base_url() ?>htdocs/365film/images/movie-banner/banner_EJ2hQV.jpg" />
+                </a>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+    </div>
+    
     <div class="article-typenav">
         <div class="container after-cls">
             <ul>
@@ -135,6 +177,23 @@
     
     <script type="text/javascript">
     $(function(){
+        
+        var mySwiper = new Swiper ('.article-banner', {
+            direction: 'horizontal', // 水平切换选项
+            loop: true, // 循环模式选项
+            
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+                clickable :true,
+            },
+            
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        })
         
         lazyLoading();//图片懒加载
         $(window).on("scroll",function(){

@@ -5,12 +5,11 @@
         
         <div class="friend-link">
             <div class="container">
-                <ul style="display: none;">
+                <ul>
                     <li><label>友情链接：</label></li>
-                    <li><a href="https://36kr.com/" target="_blank">36氪</a>|</li>
-                    <li><a href="https://www.huxiu.com/" target="_blank">虎嗅网</a>|</li>
-                    <li><a href="http://chuangyejia.com/" target="_blank">创业家</a>|</li>
-                    <li><a href="http://www.tmtpost.com/" target="_blank">钛媒体</a></li>
+                    <li><a href="https://www.marksmile.com/" target="_blank">名商网</a>|</li>
+                    <li><a href="http://www.yumi.com/" target="_blank">玉米网</a>|</li>
+                    <li><a href="http://www.shangbiao.com/" target="_blank">商标圈</a></li>
                 </ul>
                 <div class="copyright">
                     <p>本站所有影片均来自互联网，谨供交流学习用，请下载后24小时内删除，如果侵犯了你的权益，请通知我们，我们会及时删除侵权内容！</p>

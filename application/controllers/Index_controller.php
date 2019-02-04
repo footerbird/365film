@@ -100,6 +100,13 @@ class Index_controller extends CI_Controller {
         );
         $data['seo'] = json_decode(json_encode($seo));
         
+        $data['styles'] = array(
+            '/htdocs/365film/css/swiper.min.css?'.CACHE_TIME
+        );
+        $data['scripts'] = array(
+            '/htdocs/365film/js/swiper.min.js?'.CACHE_TIME
+        );
+        
         $this->load->view('365film/article_index',$data);
     
     }
