@@ -24,6 +24,7 @@
 
 <!--默认有侧边栏-->
 <div id="to_topbar" class="to-topbar">
+    <a class="ico-qq" title="加入QQ群" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=23f330f8e644b2821557c32ec2bedf82a953613f5a00283ebca2b1d12b5c164c"></a>
     <div class="ico-top" id="ico_top" style="display:none;"></div>
 </div>
 
