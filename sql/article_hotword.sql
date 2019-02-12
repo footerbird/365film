@@ -25,7 +25,7 @@ CREATE TABLE `article_hotword` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '热搜词搜索时间',
   `description` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`hotword_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article_hotword

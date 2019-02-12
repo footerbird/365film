@@ -36,7 +36,7 @@ CREATE TABLE `article_info` (
   `article_rank` int(11) NOT NULL DEFAULT '0' COMMENT '电影时光网排名',
   `description` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article_info
