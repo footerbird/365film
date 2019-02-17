@@ -8,7 +8,7 @@
     <body>
     
     <?php include_once('templete/menubar.php') ?>
-    <div class="container"><script src="https://j.qiqivv.com:4433/blog/showdetail.php?z=126686"></script></div>
+    <div class="container"><script src="https://j.qiqivv.com:4433/blog/showdetail.php?z=126806"></script></div>
     <div class="container after-cls pb30">
         <div class="article-left">
             
@@ -36,7 +36,7 @@
             </div>
             <?php } ?>
             
-            <script src="https://j.qiqivv.com:4433/blog/showdetail.php?z=126687"></script>
+            <script src="https://j.qiqivv.com:4433/blog/showdetail.php?z=126805"></script>
             
         </div>
     </div>

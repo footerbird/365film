@@ -3,23 +3,23 @@ class Index_controller extends CI_Controller {
     
     public function index(){//电影首页
         
-        //301重定向，将365film.com.cn跳转到www.365film.com.cn
+        //301重定向，将365film.cn跳转到www.365film.cn
         $the_host = $_SERVER['HTTP_HOST'];//取得当前域名   
         $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';//判断地址后面是否有参数   
         
-        if($the_host == '365film.com.cn')//把这里的域名换上你想要的   
+        if($the_host == '365film.cn')//把这里的域名换上你想要的   
         {
             header('HTTP/1.1 301 Moved Permanently');//发出301头部   
-            header('Location: http://www.365film.com.cn/');//跳转到你希望的地址格式   
+            header('Location: http://www.365film.cn/');//跳转到你希望的地址格式   
             exit;
         }
         
-//      if($the_host != 'www.365film.com.cn')//把这里的域名换上你想要的   
-//      {
-//          header('HTTP/1.1 301 Moved Permanently');//发出301头部   
-//          header('Location: http://www.365film.com.cn'.$request_uri.'?redirect='.$the_host);//跳转到你希望的地址格式   
-//          exit;
-//      }
+//         if($the_host != 'www.365film.cn')//把这里的域名换上你想要的   
+//         {
+//             header('HTTP/1.1 301 Moved Permanently');//发出301头部   
+//             header('Location: http://www.365film.cn'.$request_uri.'?redirect='.$the_host);//跳转到你希望的地址格式   
+//             exit;
+//         }
         
         $this->load->library('user_agent');
         
