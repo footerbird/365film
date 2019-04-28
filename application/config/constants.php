@@ -92,4 +92,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 /*设置公共SEO title,关键词以及描述*/
 define('SEO_TITLE','365电影网 - 2019最新电影免费下载 | 天天影院');
 define('SEO_KEYWORDS','365电影网,2019最新电影,热播电影,欧美电影,电影免费下载,迅雷电影下载,天天影院');
-define('SEO_DESCRIPTION','365电影网（365film.com.cn）免费为大家提供最新最全的免费电影下载，365影院全网更新热播欧美大片，天天影院希望大家喜欢。');
+define('SEO_DESCRIPTION','365电影网（365film.cn）免费为大家提供最新最全的免费电影下载，365影院全网更新热播欧美大片，天天影院希望大家喜欢。');
