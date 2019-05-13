@@ -1,6 +1,15 @@
 <?php
 class Index_controller extends CI_Controller {
     
+    public function __construct()
+    {
+        parent::__construct();
+        // Your own constructor code
+        if(in_array($_SERVER["REMOTE_ADDR"],$this->config->item('forbid_ips'))){
+            die("Your IP Address is forbiden to view this page!");
+        }
+    }
+    
     public function index(){//电影首页
         
         //301重定向，将365film.cn跳转到www.365film.cn
