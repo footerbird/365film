@@ -21,7 +21,7 @@ class Spider_controller extends CI_Controller {
         ))->data[0];
         $insert_data['article_route'] = random_string_numlet(6);
         $insert_data['article_title'] = trim($data['article_title']);
-        if(strpos($data['poster_path'],'/uploads/') !== 0){//如果地址在其他网站，则海报和缩略图一致
+        if(strpos($data['poster_path'],'/uploads/') !== false){//如果地址在其他网站，则海报和缩略图一致
             $all_poster_path = trim($data['poster_path']);
             $insert_data['poster_path'] = $this->upload($all_poster_path);
             $insert_data['thumb_path'] = $insert_data['poster_path'];
@@ -102,7 +102,7 @@ class Spider_controller extends CI_Controller {
             ))->data[0];
             $article_route = random_string_numlet(6);
             $article_title = trim($data['article_title']);
-            if(strpos($data['poster_path'],'/uploads/') !== 0){//如果地址在其他网站，则海报和缩略图一致
+            if(strpos($data['poster_path'],'/uploads/') !== false){//如果地址在其他网站，则海报和缩略图一致
                 $all_poster_path = trim($data['poster_path']);
                 $poster_path = $this->upload($all_poster_path);
                 $thumb_path = $poster_path;
